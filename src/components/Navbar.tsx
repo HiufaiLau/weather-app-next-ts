@@ -22,7 +22,7 @@ export default function Navbar({}: Props) {
           <p className='text-slate-900/80 text-sm'>Berlin</p>
           <div className='relative hidden md:flex'>
             {/* SearchInput */}
-            <SearchInput />
+            <SearchInput value={""} onChange={undefined} onSubmit={undefined} />
             {/* Add the SuggetionBox component */}
           </div>
         </section>
