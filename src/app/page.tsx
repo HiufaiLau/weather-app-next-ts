@@ -1,4 +1,9 @@
+/* @format */
+"use client";
+
+import { useQuery } from "react-query";
 import Navbar from "../components/Navbar";
+import axios from "axios";
 
 interface WeatherDetail {
   dt: number;
@@ -56,6 +61,20 @@ interface WeatherData {
 }
 
 export default function Home() {
+  const { isLoading, error, data } = useQuery<WeatherData>("data", async () => {
+    const { data } = await axios.get(
+      `https://api.openweathermap.org/data/2.5/find?q=berlin&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`
+    );
+    return data;
+    // fetch(
+    //   "https://api.openweathermap.org/data/2.5/find?q=berlin&appid=5eeddddf864304680f8f59ff9274c203&cnt=2"
+    // ).then((res) => res.json())
+  });
+
+  console.log(data);
+
+  if (isLoading) return "Loading...";
+
   return (
     <div className='flex flex-col gap-4 bg-gray-100 min-h-screen'>
       <Navbar />
