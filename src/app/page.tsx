@@ -2,9 +2,11 @@
 "use client";
 
 import { useQuery } from "react-query";
-import Navbar from "../components/Navbar";
 import axios from "axios";
 import { parseISO, format } from "date-fns";
+
+import Container from "../components/Container";
+import Navbar from "../components/Navbar";
 
 interface WeatherDetail {
   dt: number;
@@ -84,12 +86,15 @@ export default function Home() {
         {/* today data */}
         <section className='space-y-4'>
           <div className='space-y-2'>
-            <div className='flex gap-1 items-end text-2xl'>
+            <div className='flex gap-1 items-end text-3xl'>
               <p>{format(parseISO(firstData?.dt_txt ?? ""), "EEEE")}</p>
               <p className='text-lg'>
                 ({format(parseISO(firstData?.dt_txt ?? ""), "dd.MM.yyyy")})
               </p>
             </div>
+            <Container>
+              <div className='flex flex-col px-4'></div>
+            </Container>
           </div>
         </section>
       </main>
