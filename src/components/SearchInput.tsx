@@ -1,3 +1,4 @@
+import { cn } from "@/utils/cn";
 import React from "react";
 import { IoSearch } from "react-icons/io5";
 
@@ -13,7 +14,10 @@ export default function SearchInput(props: Props) {
     <div>
       {" "}
       <form
-        className={"flex relative items-center justify-center h-10"}
+        className={cn(
+          "flex relative items-center justify-center h-10",
+          props.className
+        )}
         onSubmit={props.onSubmit}
       >
         <input
